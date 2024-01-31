@@ -4,6 +4,7 @@ require('dotenv').config() // A .env fájlt olvassa
 const morgan = require('morgan')
 const fileUpload = require('express-fileupload')
 const errorHandler = require('./middleware/error')
+const auth = require('./routes/auth')
 
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", true);
@@ -33,6 +34,8 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 app.use("/api/trainings", trainings);
 app.use("/api/courses", courses);
+app.use("/api/auth", auth);
+
 
 app.use(errorHandler)  
 
